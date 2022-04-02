@@ -97,6 +97,8 @@ img {
   position: relative;
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition: color var(--animation) ;
 }
 .site-nav .link.current {
   color: var(--brand-blue-color);
@@ -147,7 +149,7 @@ border-radius: 2px;
   letter-spacing: 0.02em;
   align-items: center;
   justify-content: center;
- 
+ transition: color var(--animation);
   
 }
 .contact-nav .link:hover .mail-icon,
@@ -167,6 +169,7 @@ border-radius: 2px;
   width: 16px;
   height: 12px;
   margin-right: 10px;
+  transition: fill var(--animation), cursor var(--animation);
 
     
 }
@@ -256,11 +259,64 @@ border-radius: 2px;
 
   display: inline-block;
   padding: 10px 32px;
+
+  transition: filter var(--animation);
 }
 .button:hover,
 .button:focus {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
     drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+/* Маодальное окно*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transition: opacity var(--animation), visibility var(--animation);
+  
+}
+.backdrop.is-hidden{
+opacity: 0;
+visibility: hidden;
+pointer-events: none;
+}
+.modal-wrapper{
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  background-color: var(--background-page);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+  0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-button{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  
+  background-color: var(--background-page);
+   
+}
+.close{
+  display: inline-block;
+  text-align: center;
+  
 }
 
 /* Наши преимущества */
@@ -358,6 +414,8 @@ background-position:center;
 /* Чем мы занимаемся */
 .item-activity {
   margin-right: 30px;
+  position: relative;
+  
 }
 .item-activity:last-child {
   margin-right: 0;
@@ -377,6 +435,27 @@ background-position:center;
 }
 .list.activity {
   display: flex;
+}
+
+.desc-activity{
+position: absolute;
+left: 0;
+bottom: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 70px;
+margin-bottom: 0;
+background-color: rgba(47, 48, 58, 0.8);
+
+font-weight: 700;
+font-size: 14px;
+line-height: 1.14;
+text-align: center;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: var(--background-page);
 }
 /* Наша команда */
 .section.team {
@@ -442,6 +521,7 @@ background-position:center;
   align-items: center;
   width: 44px;
   height: 44px;
+  transition: background-color var(--animation), border-radius var(--animation);
 }
 .team-follow .social{
 margin-right: 10px;
@@ -453,7 +533,8 @@ margin-right: 0;
 display: inline-block;
   width: 20px;
   height: 20px;
-  fill: #AFB1B8;}
+  fill: #AFB1B8;
+transition: fill var(--animation);}
 
 .team-follow .link:hover .social-icon,
 .team-follow .link:focus .social-icon{
@@ -496,7 +577,7 @@ fill: var(--background-page);
   border-radius: 4px;
   align-items: center;
   justify-content: center;
-  
+  transition: border var(--animation);
   
 }
 .client-item{
@@ -515,6 +596,7 @@ fill: var(--background-page);
   width: 106px;
   height: 60px;
   fill: #AFB1B8;
+  transition: fill var(--animation);
  
   
 }
@@ -558,6 +640,7 @@ fill: var(--background-page);
   line-height: 1.71;
   display: inline-block;
   padding-top: 9px;
+  transition: color var(--animation);
 }
 .footer-nav .contact:focus,
 .footer-nav .contact:hover {
@@ -614,6 +697,7 @@ margin-right: 10px;
   align-items: center;
   width: 44px;
   height: 44px;
+  transition: background-color var(--animation), cursor var(--animation);
 }
 
 /* .social::before{
@@ -637,9 +721,7 @@ margin-right: 10px;
 .follow-order > .social .link:hover,
 .follow-order > .social .link:focus{
   background-color: var(--brand-blue-color);
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+ 
   cursor: pointer;
 }
 /* .social.instagram::before{
@@ -698,6 +780,8 @@ margin-right: 10px;
   text-align: center;
 
   padding: 6px 22px;
+
+  transition: color var(--animation), background-color var(--animation), box-shadow var(--animation);
 }
 .button-filter:hover,
 .button-filter:focus {
@@ -706,7 +790,7 @@ margin-right: 10px;
   cursor: pointer;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
+  
 }
 .project-list .link {
   text-decoration: none;
@@ -724,13 +808,15 @@ margin-right: 10px;
   margin-top: var(--card-set-gap);
   margin-left: var(--card-set-gap);
   flex-basis: calc((100% - 90px) / 3);
-  
+  transition: box-shadow var(--animation);
 }
-.project-item:hover{
+.project-item:hover,
+.project-item:focus{
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   
 }
-.project-item:hover .project-text{
+.project-item:hover .project-text,
+.project-item:focus .project-text{
 transform: translateY(0);
 }
 
